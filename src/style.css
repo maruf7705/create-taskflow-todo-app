@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0f0f0f] font-sans antialiased text-primary;
+  }
+}
+
+@layer components {
+    .filter-btn {
+        @apply px-4 py-2 text-sm font-semibold text-text-secondary rounded-md transition-colors hover:bg-surface-light hover:text-white focus:outline-none focus:ring-2 focus:ring-primary;
+    }
+    .active-filter {
+        @apply bg-primary text-white shadow-md;
+    }
+    .control-btn {
+        @apply px-4 py-2 text-sm font-semibold bg-surface-light text-text-secondary rounded-lg transition-all hover:bg-primary hover:text-white hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-primary;
+    }
+    .control-btn-danger {
+        @apply px-4 py-2 text-sm font-semibold bg-surface-light text-text-secondary rounded-lg transition-all hover:bg-error hover:text-white hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-error;
+    }
+}
+
+/* Custom Checkbox */
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4a4a52;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.task-checkbox:hover {
+    border-color: #9E7FFF;
+}
+
+.task-checkbox:checked {
+    background-color: #9E7FFF;
+    border-color: #9E7FFF;
+}
+
+.task-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Drag and Drop styles */
+.dragging {
+    opacity: 0.5;
+    background: #3f3f46;
+}
+
+.drag-over {
+    border-top: 2px solid #9E7FFF;
+}

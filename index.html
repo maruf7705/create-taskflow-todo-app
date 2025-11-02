@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow - Modern Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <!-- Small Grid Pattern -->
+    <div
+        class="absolute inset-0 z-0"
+        style="
+            background-image: linear-gradient(to right, #262626 1px, transparent 1px),
+                              linear-gradient(to bottom, #262626 1px, transparent 1px);
+            background-size: 20px 20px;
+        "
+    ></div>
+
+    <div id="app" class="relative z-10 min-h-screen flex flex-col items-center justify-start p-4 sm:p-6 lg:p-8">
+        <main class="w-full max-w-3xl mx-auto">
+            <header class="text-center mb-8">
+                <h1 class="text-4xl sm:text-5xl font-bold text-primary tracking-tight">TaskFlow</h1>
+                <p class="text-text-secondary mt-2">Your personal productivity dashboard.</p>
+            </header>
+
+            <!-- Task Input Form -->
+            <section class="mb-6">
+                <form id="task-form" class="flex items-center gap-3 bg-surface p-2 rounded-xl shadow-lg">
+                    <input type="text" id="task-input" placeholder="Add a new task..." class="flex-grow bg-transparent placeholder-text-secondary px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-shadow">
+                    <button type="submit" class="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface focus:ring-primary" aria-label="Add new task">
+                        Add Task
+                    </button>
+                </form>
+                <p id="error-message" class="text-error text-sm mt-2 ml-2 h-5" aria-live="polite"></p>
+            </section>
+
+            <!-- Controls -->
+            <section id="controls" class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+                <div id="filter-buttons" class="flex items-center gap-2 bg-surface p-1.5 rounded-lg">
+                    <button data-filter="all" class="filter-btn active-filter">All</button>
+                    <button data-filter="active" class="filter-btn">Active</button>
+                    <button data-filter="completed" class="filter-btn">Completed</button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="export-btn" class="control-btn">Export Tasks</button>
+                    <button id="clear-all-btn" class="control-btn-danger">Clear All</button>
+                </div>
+            </section>
+
+            <!-- Task List -->
+            <section class="bg-surface rounded-xl shadow-lg p-4 sm:p-6">
+                <div id="task-stats" class="text-text-secondary mb-4 text-sm font-medium"></div>
+                <ul id="task-list" class="space-y-3">
+                    <!-- Tasks will be rendered here -->
+                </ul>
+                <div id="no-tasks-message" class="text-center py-8 hidden">
+                    <p class="text-text-secondary">No tasks yet. Add one to get started!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-surface-light rounded-xl shadow-2xl p-8 max-w-sm w-full text-center">
+            <h2 class="text-2xl font-bold mb-4">Are you sure?</h2>
+            <p class="text-text-secondary mb-8">This will permanently delete all tasks. This action cannot be undone.</p>
+            <div class="flex justify-center gap-4">
+                <button id="cancel-clear" class="px-6 py-2 rounded-lg bg-border hover:bg-opacity-80 transition">Cancel</button>
+                <button id="confirm-clear" class="px-6 py-2 rounded-lg bg-error text-white font-semibold hover:bg-opacity-90 transition">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

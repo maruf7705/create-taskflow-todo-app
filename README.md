@@ -92,5 +92,3 @@ The project follows a simple and organized structure:
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-
-Built with ❤️ by Bolt.
